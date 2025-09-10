@@ -1,0 +1,31 @@
+{% extends "_canvas.html" %}
+{% block title %}Esi Lecture Connection{% endblock %}
+
+{% block content %}
+<div class="container m-5">
+    <div class="p-5 text-bg-dark rounded-3 d-inline-block">
+        <form action="{% url 'odoo_connexion:login' %}" method="POST">
+            {% csrf_token %}
+                <table >
+                    {{ userForm.as_table }}
+                </table>
+            <button type="submit" class="btn btn-primary mt-5">Connexion</button> 
+        </form>
+    </div>
+{% if messages %}
+<ul class="messages mt-5">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }} d-inline-block"{% endif %}>
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <span class="alert alert-success">{{ message }}</span>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <span class="alert alert-danger">{{ message }}</span>
+    {% endif %}
+
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+</div>
+{% endblock %}

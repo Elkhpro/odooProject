@@ -1,0 +1,74 @@
+{% extends "_canvas.html" %}
+
+{% block title %} L'index {% endblock title %}
+
+{% block content %}
+        <h2 class="h2"> Vos livres. </h2>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+              <form class="d-flex" role="search" method="get" action="{% url 'odoo_book:index' %}">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" value="{{ request.GET.search }}">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
+          </nav>
+        <div class="mt-5 d-flex flex-wrap" style="display: flex;">
+
+        {% if books %}
+            {% for book in books %}
+            <div class="card m-8" style="margin-bottom: 10px;" >
+                <div class="card-header text-light bg-dark">
+                    {{ book.name }}
+                </div>
+                
+                <div class="card-body" >
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td><img src="data:image/jpeg;base64,{{ book.cover_image }}" style="width: 100px; height: auto; margin: 5px;"/> </td>
+                            <td>
+                                <table style="font-size: 20px;">
+                                    <tr>
+                                        <td> Autheurs : {{ book.authors }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Nombre de pages : {{ book.num_pages }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nombre de like : {{ book.like_count }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td> Date de publication : {{ book.publication_date}}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>    
+                        </tbody>
+                    </table>
+                    <hr>
+                    <tr>
+                        <td>{{ book.description|safe }}</td>
+                    </tr>
+                    <form action="{% url 'odoo_book:addLike' book.id %}" method="POST">
+                        {% csrf_token %}        
+                        <button class="ui button" type="submit" action="{% url 'odoo_book:addLike' book.id %}">
+                            {% if book.is_liked_by_current_user %}
+                                <i class="thumbs up icon"></i>
+                            {% else %}
+                                <i class="thumbs up outline icon"></i>
+                            {% endif %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="container m-5">
+            <h4>
+                <alert class="alert alert-warning">There are no books!</alert>
+            </h4>
+        </div>
+        {% endif %}    
+
+{% endblock content %}
