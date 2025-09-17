@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="author_form_view">
+        <field name="name">author.form</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form string="Author Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="author_tree_view">
+        <field name="name">author.tree</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree string="Author Tree">
+                <field name="name"/>
+                <field name="books" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="author_search_view">
+        <field name="name">author.search</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="authors_only" string="Authors" domain="[('books', '!=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+
+</odoo>

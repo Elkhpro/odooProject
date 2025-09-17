@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.actions.act_window" id="book_list_action">
+        <field name="name">Books</field>
+        <field name="res_model">esi_lecture.book</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the  first Book</p>
+        </field>
+
+    </record>
+
+    <record model="ir.actions.act_window" id="author_list_action">
+        <field name="name">Authors</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the  first Author</p>
+        </field>
+        <field name="context">{'search_default_authors_only': 1}</field>
+
+    </record>
+
+    <record model="ir.actions.act_window" id="product_list_action">
+        <field name="name">Product</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create the  first product</p>
+        </field>
+    </record>
+
+
+    <menuitem id="main_esi_lecture_menu" name="Esi Lecture">
+        <menuitem id="book_menu" name="Books" action="book_list_action"/>
+        <menuitem id="author_menu" name="Authors" action="author_list_action"/>
+        <menuitem id="product_menu" name="Product" action="product_list_action"/>
+        <menuitem id="menu_esi_lecture_stock_operations" name="Stock Operations" action="stock.stock_picking_type_action"/>
+        <menuitem id="menu_esi_lecture_pos_config" name="Point of Sale Config" action="point_of_sale.action_pos_config_kanban"/>
+    </menuitem>    
+
+
+</odoo>

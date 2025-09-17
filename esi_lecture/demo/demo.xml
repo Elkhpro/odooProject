@@ -1,0 +1,138 @@
+<odoo>
+    <data>
+
+    <!--Author à créer -->
+
+    <record id="author_donald_knuth" model="res.partner">
+        <field name="name">Donald E. Knuth</field>
+    </record>
+
+    <record id="author_frank_herbert" model="res.partner">
+        <field name="name">Frank Herbert</field>
+    </record>
+    
+    <record id="author_jk_rowling" model="res.partner">
+        <field name="name">J.K. Rowling</field>
+    </record>
+
+    <!--Book à créer -->
+
+    <record id="book_harry_potter_1" model="esi_lecture.book">
+            <field name="name">Harry Potter, I : Harry Potter à l'école des sorciers</field>
+            <field name="description">
+            Quatrième de couverture
+                
+                Harry Potter est un garçon ordinaire.
+                Mais le jour de ses onze ans, son existence bascule :
+                un géant vient le chercher pour l'emmener dans une école de sorciers.
+                Quel mystère entoure donc sa naissance et qui est l'effroyable V...,
+                le mage dont personne n'ose prononcer le nom ? Voler à cheval sur des balais,
+                jeter des sorts, combattre les Trolls : Harry Potter se révèle un sorcier vraiment doué.
+                Quand il décide, avec ses amis, d'explorer les moindres recoins de son école,
+                il va se trouver entraîné dans d'extraordinaires aventures.
+                </field>
+            <field name="publication_date">2017-10-12</field>
+            <field name="num_pages">320</field>
+            <field name="authors" eval="[(6, 0, [ref('author_jk_rowling')])]"/>
+        </record>
+
+        <record id="book_harry_potter_2" model="esi_lecture.book">
+            <field name="name">Harry Potter et la chambre des secrets</field>
+            <field name="description">Quatrième de couverture
+                
+                Harry Potter fait une rentrée fracassante en voiture volante à l'école des sorciers.
+                Cette deuxième année ne s'annonce pas de tout repos...
+                surtout depuis qu'une étrange malédiction s'est abattue sur les élèves.
+                Entre les cours de potion magique, les matches de Quidditch et les combats de mauvais sorts,
+                Harry trouvera-t-il le temps de percer le mystère de la Chambre des Secrets ?
+                Un livre magique pour sorciers confirmés.</field>
+            <field name="publication_date">2017-10-12</field>
+            <field name="num_pages">368</field>
+            <field name="authors" eval="[(6, 0, [ref('author_jk_rowling')])]"/>
+        </record>
+
+        <record id="book_harry_potter_3" model="esi_lecture.book">
+            <field name="name">Harry Potter, III : Harry Potter et le prisonnier d'Azkaban</field>
+            <field name="description">Quatrième de couverture
+                
+                Sirius Black, le dangereux criminel qui s'est échappé de la forteresse d'Azkaban,
+                recherche Harry Potter. C'est donc sous bonne garde que l'apprenti sorcier fait
+                sa troisième rentrée.
+                Au programme : des cours de divination, la fabrication d'une potion de ratatinage, le dressage des hippogriffes...
+                Mais Harry est-il vraiment à l'abri du danger qui le menace ?
+                Un livre époustouflant qui vous emportera dans un tourbillon de surprises et d'émotions.</field>
+            <field name="publication_date">2017-10-12</field>
+            <field name="num_pages">448</field>
+            <field name="authors" eval="[(6, 0, [ref('author_jk_rowling')])]"/>
+        </record>
+
+        <record id="book_dune_1" model="esi_lecture.book">
+            <field name="name">Dune - Tome 1</field>
+            <field name="description">Biographie de l'auteur
+                
+                Véritable légende dans l'univers de la SF, l'écrivain américain Frank Herbert (1920 - 1986)
+                est mondialement connu pour sa série Dune,
+                vendue à des millions d'exemplaires.
+                En France, ses œuvres majeures ont été publiées dans la collection "" Ailleurs &amp; Demain "".
+                    </field>
+            <field name="publication_date">2020-10-01</field>
+            <field name="num_pages">838</field>
+            <field name="authors" eval="[(6, 0, [ref('author_frank_herbert')])]"/>
+        </record>
+
+
+
+    <!-- Produits à créer -->
+    <record id="product_coffret_potter" model="product.product">
+        <field name="name">Coffret Potter</field>
+        <field name="standard_price">40.0</field>
+        <field name="list_price">50.0</field>
+        <field name="type">product</field>
+        <field name="weight">0.7</field>
+        <field name="default_code">Box1</field>
+        <field name="available_in_pos">True</field>
+       
+    </record>
+
+    <record id="product_book_1" model="product.product">
+        <field name="name">book 1</field>
+        <field name="standard_price">8.9</field>
+        <field name="list_price">14.9</field>
+        <field name="type">product</field>
+        <field name="weight">0.18</field>
+        <field name="default_code">2070584623</field>
+        <field name="available_in_pos">True</field>
+    </record>
+
+     <record id="product_book_2" model="product.product">
+        <field name="name">book 2</field>
+        <field name="standard_price">9.9</field>
+        <field name="list_price">14.9</field>
+        <field name="type">product</field>
+        <field name="weight">0.23</field>
+        <field name="default_code">207058464X</field>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_book_3" model="product.product">
+        <field name="name">book 3</field>
+        <field name="standard_price">9.9</field>
+        <field name="list_price">14.9</field>
+        <field name="type">product</field>
+        <field name="weight">0.23</field>
+        <field name="default_code">2070584925</field>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_book_4" model="product.product">
+        <field name="name">book 4</field>
+        <field name="standard_price">19.99</field>
+        <field name="list_price">24.99</field>
+        <field name="type">product</field>
+        <field name="weight">0.86</field>
+        <field name="default_code">2221249488</field>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    </data>
+</odoo>

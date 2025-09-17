@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="book_stock_inventory" model="stock.inventory">
+            <field name="name">Initialisation du Stock des Livres</field>
+        </record>
+
+        <record id="book_stock_inventory_line_coffret_potter" model="stock.inventory.line">
+            <field name="product_id" ref="esi_lecture.product_coffret_potter"/>
+            <field name="product_uom_id" ref="uom.product_uom_unit"/>
+            <field name="inventory_id" ref="book_stock_inventory"/>
+            <field name="product_qty">15</field>
+            <field name="location_id" model="stock.location" eval="obj().env.ref('stock.stock_location_stock').id"/>
+        </record>
+
+
+        <record id="book_stock_inventory_line_book_1" model="stock.inventory.line">
+            <field name="product_id" ref="esi_lecture.product_book_1"/>
+            <field name="product_uom_id" ref="uom.product_uom_unit"/>
+            <field name="inventory_id" ref="book_stock_inventory"/>
+            <field name="product_qty">15</field>
+            <field name="location_id" model="stock.location" eval="obj().env.ref('stock.stock_location_stock').id"/>
+        </record>
+
+        <record id="book_stock_inventory_line_book_2" model="stock.inventory.line">
+            <field name="product_id" ref="esi_lecture.product_book_2"/>
+            <field name="product_uom_id" ref="uom.product_uom_unit"/>
+            <field name="inventory_id" ref="book_stock_inventory"/>
+            <field name="product_qty">15</field>
+            <field name="location_id" model="stock.location" eval="obj().env.ref('stock.stock_location_stock').id"/>
+        </record>
+
+        <record id="book_stock_inventory_line_book_3" model="stock.inventory.line">
+            <field name="product_id" ref="esi_lecture.product_book_3"/>
+            <field name="product_uom_id" ref="uom.product_uom_unit"/>
+            <field name="inventory_id" ref="book_stock_inventory"/>
+            <field name="product_qty">15</field>
+            <field name="location_id" model="stock.location" eval="obj().env.ref('stock.stock_location_stock').id"/>
+        </record>
+
+        <record id="book_stock_inventory_line_book_4" model="stock.inventory.line">
+            <field name="product_id" ref="esi_lecture.product_book_4"/>
+            <field name="product_uom_id" ref="uom.product_uom_unit"/>
+            <field name="inventory_id" ref="book_stock_inventory"/>
+            <field name="product_qty">15</field>
+            <field name="location_id" model="stock.location" eval="obj().env.ref('stock.stock_location_stock').id"/>
+        </record>
+
+        <!-- Démarre l'inventaire et valide l'inventaire -->
+        
+        <function model="stock.inventory" name="_action_start">
+            <function eval="[[('state','=','draft'),('id', '=', ref('book_stock_inventory'))]]" model="stock.inventory" name="search"/>
+        </function>
+
+        <function model="stock.inventory" name="action_validate">
+            <function eval="[[('state','=','confirm'),('id', '=', ref('book_stock_inventory'))]]" model="stock.inventory" name="search"/>
+        </function>
+    </data>
+</odoo>
